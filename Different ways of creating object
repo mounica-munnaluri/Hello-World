@@ -1,0 +1,44 @@
+function person(fname,lname,age)
+{
+  this.fname=fname;
+  this.lname=lname;
+  this.age=age;
+}
+
+person.prototype.getinfo=function(){
+  console.log('Name:'+this.fname+' '+this.lname);
+  console.log('Age:'+this.age);
+};
+
+console.log("using Object.create");
+var mother=Object.create(person.prototype,{fname:{value:'sailaja'},lname:{value:'munnaluri'},age:{value:45}});
+mother.getinfo();
+console.log('----');
+
+console.log("using constructor");
+var father=new person("subbarao","munnaluri",50);
+father.getinfo();
+console.log('----');
+
+console.log("using new keyword");
+var husband=new Object();//or husband={};
+husband.fname='sai';
+husband.lname='saranam';
+husband.age=25;
+husband.getinfo=function(){
+  console.log('Name:'+this.fname+' '+this.lname);
+  console.log('Age:'+this.age);
+};
+husband.getinfo();
+console.log('----');
+
+console.log("using Object literal method");
+var wife={fname:'mouni',
+          lname:'saranam',
+          age:22};
+wife.getinfo=function(){
+   console.log('Name:'+this.fname+' '+this.lname);
+  console.log('Age:'+this.age);
+          };
+wife.getinfo();
+console.log('----');
